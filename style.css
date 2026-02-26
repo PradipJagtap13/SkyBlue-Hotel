@@ -188,3 +188,65 @@ footer {
     .hero h1 { font-size: 2.2rem; }
     .contact-container { grid-template-columns: 1fr; }
 }
+
+/* --- Desktop Navigation (Nav-Dropdown Responsiveness) --- */
+.menu-toggle {
+    display: none; /* Hide checkbox */
+}
+
+.hamburger {
+    display: none; /* Hide icon on desktop */
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background: var(--dark-blue);
+    transition: var(--transition);
+}
+
+/* --- Mobile Navigation (Update the @media block) --- */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex; /* Show icon on mobile */
+    }
+
+    .nav-links {
+        display: none; /* Hidden by default */
+        flex-direction: column;
+        position: absolute;
+        top: 100%; /* Sits right under the nav bar */
+        left: 0;
+        width: 100%;
+        background: var(--white);
+        padding: 20px 0;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        text-align: center;
+    }
+
+    .nav-links li {
+        margin: 15px 0;
+    }
+
+    /* THE MAGIC: When checkbox is checked, show the menu */
+    .menu-toggle:checked ~ .nav-links {
+        display: flex;
+    }
+
+    /* Optional: Animate hamburger to 'X' when checked */
+    .menu-toggle:checked ~ .hamburger span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    .menu-toggle:checked ~ .hamburger span:nth-child(2) {
+        opacity: 0;
+    }
+    .menu-toggle:checked ~ .hamburger span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .hero h1 { font-size: 2.2rem; }
+    .contact-container { grid-template-columns: 1fr; }
+}
